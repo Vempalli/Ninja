@@ -16,7 +16,6 @@ public class IsSingleEdit {
 	}
 
 	private static boolean isOneEditDistance(String input1, String input2) {
-		boolean isOneEdit = false;
 		int len1 = input1.length();
 		int len2 = input2.length();
 		if(len2 < len1){
