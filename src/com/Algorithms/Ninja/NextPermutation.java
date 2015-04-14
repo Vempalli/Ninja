@@ -1,8 +1,15 @@
 package com.Algorithms.Ninja;
 
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Scanner;
 
+/*
+ * Greatest integer less than n with same digits
+ * Input - 3618
+ * Output - 3186
+ */
 public class NextPermutation {
 
 	public static void main(String[] args) {
@@ -19,12 +26,12 @@ public class NextPermutation {
 		char[] chars = input.toCharArray();
 		int n = input.length();
 		int i = 0;
-		for(i = n-1; i >= 0; i--){
-			if(chars[i] > chars[i-1]){
+		for(i = n-1; i > 0; i--){
+			if(chars[i] < chars[i-1]){
 				break;
 			}
 		}
-		if(i<0){
+		if(i<=0){
 			output.append("no answer");
 			return output.toString();
 		}
@@ -32,7 +39,7 @@ public class NextPermutation {
 		int smallIndex = i;
 		int j = 0;
 		for(j= smallIndex+1; j<n; j++){
-			if(chars[j] > chars[digitIndex] && chars[j] < chars[smallIndex]){
+			if(chars[j] < chars[digitIndex] && chars[j] < chars[smallIndex]){
 				smallIndex = j;
 			}
 		}
@@ -41,8 +48,19 @@ public class NextPermutation {
 		chars[smallIndex] = chars[digitIndex];
 		chars[digitIndex] = temp;
 		
-		Arrays.sort(chars, digitIndex+1, n);
-		return output.append(chars).toString();
+		//Arrays.sort(chars, digitIndex+1, n);
+		//Added code
+		Character[] temp1 = new Character[n];
+		for(int ind = 0;ind < n; ind++){
+			temp1[ind] = chars[ind];
+		}
+		Arrays.sort(temp1,digitIndex+1,n, Collections.reverseOrder());
+		//return output.append(chars).toString();
+		for(int k = 0; k < n ; k++){
+			output.append(temp1[k]);
+		}
+		//return output.append(temp1).toString();
+		return output.toString();
 	}
 
 }
