@@ -9,7 +9,7 @@ import java.util.Scanner;
 // Actual: Should use treemap or binary search tree
 
 
-class Interval {
+/*class Interval {
 	int start;
 	int end;
  
@@ -22,9 +22,9 @@ class Interval {
 		start = s;
 		end = e;
 	}
-}
+}*/
 
-public class IntervalMerge {
+public class IntervalRange {
 	
 	public static void main(String[] args) {
 		Scanner x = new Scanner(System.in);
@@ -80,9 +80,9 @@ public class IntervalMerge {
 		return result;
 	}
 }
-class IntervalComparator implements Comparator<Interval> {
+/*class IntervalComparator implements Comparator<Interval> {
 	public int compare(Interval i1, Interval i2) {
 		return i1.start - i2.start;
 	}
 	
-}
+}*/
