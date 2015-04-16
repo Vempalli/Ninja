@@ -3,10 +3,6 @@ package com.Algorithms.Ninja;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Scanner;
-
-// Improved by using priority queue: https://github.com/daisyonly/algorithm-discussion-class/blob/0b84efef41a48b0cdf9febe4606140cb60c34ab9/src/leetcode_others/MergeIntervals.java
-// Actual: Should use treemap or binary search tree
 
 
 class Interval {
@@ -27,31 +23,22 @@ class Interval {
 public class IntervalMerge {
 	
 	public static void main(String[] args) {
-		Scanner x = new Scanner(System.in);
-		boolean hasInterval = true;
-		ArrayList<Interval> initial = new ArrayList<Interval>();
-		while(hasInterval){
-			System.out.println("Enter Intervals");
-			int start = x.nextInt();
-			int end = x.nextInt();
-			Interval i = new Interval(start,end);
-			initial.add(i);
-			initial = merge(initial);
-			int count = 0;
-			for(Interval inter: initial){
-				count += inter.end-inter.start + 1;
-			}
-			System.out.println(count);
-			System.out.println("Have more intervals?");
-			String choice = x.next();
-			if(choice.equalsIgnoreCase("no")||choice.equalsIgnoreCase("n")){
-				hasInterval = false;
-			}
+		Interval i1 = new Interval(1,5);
+		Interval i2 = new Interval(3,6);
+		Interval i3 = new Interval(7,12);
+		ArrayList<Interval> intervals = new ArrayList<Interval>();
+		ArrayList<Interval> result = new ArrayList<Interval>();
+		intervals.add(i1);
+		intervals.add(i2);
+		intervals.add(i3);
+		IntervalMerge merge = new IntervalMerge();
+		result = merge.merge(intervals);
+		for(int i =0; i < result.size();i++){
+			System.out.println(result.get(i).start + ", "+ result.get(i).end);
 		}
-		
 	}
 
-	public static ArrayList<Interval> merge(ArrayList<Interval> intervals) {
+	public ArrayList<Interval> merge(ArrayList<Interval> intervals) {
 		 
 		if (intervals == null || intervals.size() <= 1)
 			return intervals;
